@@ -5,6 +5,8 @@
 
 int main(){
 
+    int cone = 10;
+
 
     int tabuleiro[LINHAS][COLUNAS]; //Declaração do array, ou seja, o tamanho do campo
 
@@ -12,36 +14,65 @@ int main(){
     {
         for (int j = 0; j < COLUNAS; j++)
         {
-            tabuleiro[i][j] = 0;
+                tabuleiro[i][j] = 0;
+
         }
         
     }
 
-    //Declaração do navio na horizontal
-    tabuleiro[2][3] = 3;
-    tabuleiro[2][4] = 3;
-    tabuleiro[2][5] = 3;
+    //Loop para o cone
+    for (int i = 0; i < LINHAS; i++)
+    {
+        for (int j = 0; j < COLUNAS; j++)
+        {
+            if ((i == 0 && j == 2) || (i == 1 && j > 0 && j < 4) || (i == 2 && j >= 0 && j < 5))
+            {
+                tabuleiro[i][j] = 3;
+            }
+            
+        }
+        
+    }
 
-    //Declaração do navio na vertical
-    tabuleiro[6][3] = 3;
-    tabuleiro[7][3] = 3;
-    tabuleiro[8][3] = 3;
 
-    //Declaração do navio na dianogonal direita
-    tabuleiro[4][6] = 3;
-    tabuleiro[3][7] = 3;
-    tabuleiro[2][8] = 3;
+    //Loop para cruz
+    for (int i = 0; i < LINHAS; i++)
+    {
+        for (int j = 0; j < COLUNAS; j++)
+        {
+            if ((i == 4 && j == 2) || (i == 5 && j < 5) || (i == 6 && j == 2))
+            {
+                tabuleiro[i][j] = 3;
+            }
+            
+        }
+        
+    }
 
-    //Declaração do navio na diagonal esquerda
-    tabuleiro[6][6] = 3;
-    tabuleiro[7][7] = 3;
-    tabuleiro[8][8] = 3;
+
+    //Loop para o octaedro
+    for (int i = 0; i < LINHAS; i++)
+    {
+        for (int j = 0; j < COLUNAS; j++)
+        {
+            if ((i == 7 && j == 7) || (i == 8 && j > 5 && j < 9) || (i == 9 && j == 7))
+            {
+                tabuleiro[i][j] = 3;
+            }
+            
+        }
+        
+    }
+    
+    
+    
 
     //Exposição do tabuleiro
     printf("   A B C D E F G H I J\n");
     for (int i = 0; i < LINHAS; i++) {
         printf("%2d ", i + 1);
         for (int j = 0; j < COLUNAS; j++) {
+            
             printf("%d ", tabuleiro[i][j]);
         }
         printf("\n");
